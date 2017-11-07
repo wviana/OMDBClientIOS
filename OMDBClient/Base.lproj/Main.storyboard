@@ -101,6 +101,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="coverImage" destination="RqZ-QH-hws" id="Tar-fS-4bG"/>
                                     <outlet property="durationLabel" destination="ZUV-RM-HGU" id="pQV-Jb-TIF"/>
                                     <outlet property="mainActorLabel" destination="uih-OB-2jq" id="d8U-Da-BVo"/>
                                     <outlet property="titleLabel" destination="JgC-4b-89Z" id="MFx-9L-b4C"/>
