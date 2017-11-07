@@ -39,8 +39,6 @@ class OmdbService {
 								DispatchQueue.main.async {
 									completionHandler(movies)
 								}
-							} else {
-								print("Couldn't transform into Array of map")
 							}
 						} catch { }
 					}

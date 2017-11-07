@@ -90,9 +90,9 @@
 				4425644F1FA932980096371F /* MovieViewCell.swift */,
 				441A1FF01FA8084D00B3D62B /* MyMoviesTableViewController.swift */,
 				441A1FF21FA80A3F00B3D62B /* Movie.swift */,
+				442564531FA965170096371F /* OmdbService.swift */,
 				441A1FDA1FA7E8B900B3D62B /* Info.plist */,
 				441A1FEF1FA807F400B3D62B /* Supporting Files */,
-				442564531FA965170096371F /* OmdbService.swift */,
 			);
 			path = OMDBClient;
 			sourceTree = "<group>";
