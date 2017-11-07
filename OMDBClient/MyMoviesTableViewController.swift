@@ -8,13 +8,10 @@
 
 import UIKit
 
-class MyMoviesTableViewController: UITableViewController {
+class MyMoviesTableViewController: UITableViewController, MovieSelectedDelegate {
 
-	var myMovies = [Movie]() {
-		didSet {
-			self.tableView.reloadData()
-		}
-	}
+
+	var myMovies = [Movie]()
 
 	override func viewDidLoad() {
 	}
@@ -37,6 +34,20 @@ class MyMoviesTableViewController: UITableViewController {
 		return cell
 	}
 
-	
+	// MARK: - Navegation
+
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let smtvc = segue.destination as? SeachMoviesTableViewController {
+			smtvc.delegate = self
+		}
+	}
+
+	// MARK: - SelectMovieDelegate
+
+	func selectMovie(_ movie: Movie) {
+		myMovies.append(movie)
+		self.tableView.insertRows(at: [IndexPath(row: myMovies.count - 1, section: 0)], with: .automatic)
+	}
+
 
 }

@@ -56,23 +56,16 @@ class SeachMoviesTableViewController: UITableViewController, UITextFieldDelegate
 		return cell
     }
 
-	private var selectedMovie: Movie?
+	weak var delegate: MovieSelectedDelegate?
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		selectedMovie = movies[indexPath.row]
-		self.dismiss(animated: true)
-		self.presentingViewController?.dismiss(animated: true)
-	}
-
-	// MARK: - Navigation
-
-	override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
-		if let myMoviesController = subsequentVC as? MyMoviesTableViewController {
-			if let movie = selectedMovie {
-				myMoviesController.myMovies.append(movie)
-			}
+		if let delegate = self.delegate {
+			delegate.selectMovie(movies[indexPath.row])
 		}
-
+		self.navigationController?.popViewController(animated: true)
 	}
+}
 
+protocol MovieSelectedDelegate : class {
+	func selectMovie(_ movie: Movie)
 }
