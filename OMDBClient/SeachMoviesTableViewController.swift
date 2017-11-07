@@ -21,9 +21,13 @@ class SeachMoviesTableViewController: UITableViewController, UITextFieldDelegate
 		seachTextField.delegate = self
 	}
 
+	var omdbSerice: OmdbService?
+
 	var search: String = "" {
 		didSet {
-			OmdbService().searchMovie(byName: search) { self.movies = $0 }
+			if let service = omdbSerice {
+				service.searchMovie(byName: search) { self.movies = $0 }
+			}
 		}
 	}
 
@@ -31,7 +35,7 @@ class SeachMoviesTableViewController: UITableViewController, UITextFieldDelegate
 
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		search = textField.text ?? ""
-		return false
+		return true
 	}
 
     // MARK: - Table view data source

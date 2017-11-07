@@ -32,8 +32,17 @@ class Movie {
 		name = json["Title"] as! String
 		year = Int(json["Year"] as! String)
 
-		mainActor = nil
-		duration = nil
+		if let actors = json["Actors"] as? String, let mainActor = actors.components(separatedBy: ",").first {
+			self.mainActor = mainActor
+		} else {
+			mainActor = nil
+		}
+
+		if let duration = json["Runtime"] as? String {
+			self.duration = duration
+		} else {
+			duration = nil
+		}
 
 		if let url = json["Poster"] as? String {
 			coverUrl = URL(string: url)

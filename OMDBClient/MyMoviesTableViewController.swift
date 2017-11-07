@@ -12,6 +12,7 @@ class MyMoviesTableViewController: UITableViewController, MovieSelectedDelegate 
 
 
 	var myMovies = [Movie]()
+	let service  = OmdbService()
 
 	override func viewDidLoad() {
 	}
@@ -29,6 +30,7 @@ class MyMoviesTableViewController: UITableViewController, MovieSelectedDelegate 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath)
 		if let movieCell = cell as? MovieViewCell {
+			movieCell.omdbServjce = service
 			movieCell.movie = myMovies[indexPath.row]
 		}
 		return cell
@@ -39,6 +41,7 @@ class MyMoviesTableViewController: UITableViewController, MovieSelectedDelegate 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let smtvc = segue.destination as? SeachMoviesTableViewController {
 			smtvc.delegate = self
+			smtvc.omdbSerice = service
 		}
 	}
 

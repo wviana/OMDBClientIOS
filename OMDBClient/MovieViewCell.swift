@@ -16,6 +16,7 @@ class MovieViewCell: UITableViewCell {
 	@IBOutlet weak var durationLabel: UILabel!
 	@IBOutlet weak var coverImage: UIImageView!
 
+	var omdbServjce: OmdbService?
 	var movie: Movie? { didSet { updateUI() } }
 
 	private func updateUI() {
@@ -30,6 +31,10 @@ class MovieViewCell: UITableViewCell {
 
 		if let imgUrl = movie?.coverUrl {
 			fetchCoverImage(byUrl: imgUrl)
+		}
+
+		if let omdbS = omdbServjce, !movie!.isComplete {
+			omdbS.fillRaminFildsOf(movie!) { self.movie = $0 }
 		}
 	}
 
