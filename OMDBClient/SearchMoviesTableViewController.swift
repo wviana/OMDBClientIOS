@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SeachMoviesTableViewController: UITableViewController, UITextFieldDelegate {
+class SearchMoviesTableViewController: UITableViewController, UITextFieldDelegate {
 
 	@IBOutlet weak var seachTextField: UITextField!
 	private var movies: [Movie] = [] {
