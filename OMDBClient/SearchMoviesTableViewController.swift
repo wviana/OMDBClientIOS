@@ -11,7 +11,11 @@ import UIKit
 class SearchMoviesTableViewController: UITableViewController, UITextFieldDelegate {
 
 	@IBOutlet weak var seachTextField: UITextField!
-	private var movies: [Movie] = []
+	private var movies: [Movie] = [] {
+		didSet {
+			tableView.reloadData()
+		}
+	}
 
 	override func viewDidLoad() {
 		seachTextField.delegate = self
