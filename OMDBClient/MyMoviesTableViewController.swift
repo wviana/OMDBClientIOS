@@ -39,7 +39,7 @@ class MyMoviesTableViewController: UITableViewController, MovieSelectedDelegate 
 	// MARK: - Navegation
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if let smtvc = segue.destination as? SeachMoviesTableViewController {
+		if let smtvc = segue.destination as? SearchMoviesTableViewController {
 			smtvc.delegate = self
 			smtvc.omdbSerice = service
 		}
